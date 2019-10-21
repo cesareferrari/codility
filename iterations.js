@@ -48,3 +48,20 @@ const triangle = n => {
 
 triangle(4);
 triangle(10);
+
+
+
+process.stdout.write("#######################################\n");
+process.stdout.write("#######################################\n");
+
+
+
+
+const triangle2 = n => {
+  for (let i = 1; i <= n; i++) {
+    process.stdout.write('*');
+  }
+  process.stdout.write('\n');
+}
+
+triangle2(5);
