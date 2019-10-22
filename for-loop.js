@@ -1,7 +1,12 @@
-require("babel-core").transform("code", options);
+const separator = () => {
+  process.stdout.write('\n\n');
 
-import {separator} from './utilities.js';
-// const separator = require('./utilities.js');
+  for (let i = 1; i <= 70; i++) {
+    process.stdout.write('>');
+  }
+
+  process.stdout.write('\n\n');
+}
 
 // For loop
 

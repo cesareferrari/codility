@@ -324,3 +324,118 @@ we get the result we want:
 
 We have seen how to use a nested loop to print out random characters to the console.
 We'll talk more about Javascript iterations in future articles.
+
+
+
+## While loop
+
+In addition to a for loop, Javascript has a while loop that's used in a similar
+way. 
+
+While loops are useful when we don't know in advance how many times a statement should be executed but we know that it must be executed every time a condition is true.
+
+The while loop has this structure:
+
+```
+while (condition) {
+  statement
+}
+```
+
+The loop keeps iterating while a condition is true and the statement inside the loop is executed. When the condition becomes false, the loop stops iterating and control is passed to the statement after the loop.
+
+Here's an example of a while loop.
+
+```
+let n = 0;
+
+while (n <= 3) {
+  console.log(n);
+  n++;
+}
+
+console.log('End loop')
+```
+
+We initialize a number to 0 and inside the loop we print out the number and add 1 to it.
+
+The next time the loop executes, n will be equal to 2 and so on. 
+
+The condition specifies that the loop keeps iterating while n is less or equal to 3. When this condition is met, the loop stops, the code prints out 'End loop' and our program exits.
+
+A real program
+
+Let's put the while loop to good use. We know that the number 234 has 3 digits and the number 2 has 1 digit.
+
+What about the number 1000343490884773 ? How many digits are there? Yes, we
+could count them one by one but that takes time and we may lose track of the count. It would be much easier to have the computer count them for us.
+
+Can we build a function that quickly calculates how many digits a given number
+has?
+Of course we can. We just use our trusty old while loop. 
+
+One way to count how many digits a number has is to convert the number to a
+string and then count the characters.
+
+Here's an example: 
+
+```
+[1000343490884773].toString().split('').length  // 16
+```
+
+This will return the correct length, but what if we don't want to convert the
+number to a string?
+
+Another approach is to keep dividing the given number by 10 and count how many
+times we do this operation.
+Every time we divide by 10, we effectively remove a digit from the end of
+the number.
+When there are no numbers left, we know we have counted all the numbers
+recursively.
+
+Here's a function that does just this:
+
+```
+const numberOfDigits = (n) => {
+  let result = 0;
+
+  while (n > 0) {
+    n = Math.floor(n / 10);
+    result++;
+  }
+
+  return result;
+}
+```
+
+We initialize a result variable to 0. This variable keeps track of how many
+digits the given number has.
+We then we set up a while loop that runs while the given number is more than 0.
+
+Inside the loop we divide the number by 10. We use the Math.floor() method
+because we want to get rid of the decimal number:
+
+```
+4773 / 10               // equals 477.3
+Math.floor(4773 / 10)   // equals 477
+```
+
+Since we removed a digit, we add 1 to result.
+
+We keep going until we don't have any more digits to remove. At that point, n
+will be zero, so the while loop stops and we return the result, which is the
+number of digits in the given number.
+
+Let's test it out:
+
+```
+console.log(numberOfDigits(234));                //  3
+console.log(numberOfDigits(2));                  //  1
+console.log(numberOfDigits(1000343490884773));   // 16
+```
+
+We have seen how a while loop can help us when counting the digits in
+a large number.
+
+
+
