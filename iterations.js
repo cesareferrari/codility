@@ -1,3 +1,8 @@
+require("babel-core").transform("code", options);
+
+import {separator} from './utilities.js';
+// const separator = require('./utilities.js');
+
 // For loop
 
 // Function that prints out the elements of an array
@@ -49,13 +54,7 @@ const triangle = n => {
 triangle(4);
 triangle(10);
 
-
-
-process.stdout.write("#######################################\n");
-process.stdout.write("#######################################\n");
-
-
-
+separator();
 
 const triangle2 = n => {
   for (let i = 1; i <= n; i++) {
